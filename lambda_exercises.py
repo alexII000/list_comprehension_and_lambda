@@ -44,43 +44,46 @@ remove_words = ['orange', 'black']
 #After removing the specified words from the said list:
 ['red', 'green', 'blue', 'white']
 
-def remove_words(word):
-    return list(filter(lambda x: x in remove_words, list))
-day_filter = remove_words(og_words)
+def filter_words(word):
+    return list(filter(lambda x: x not in remove_words, word))
+day_filter = filter_words(og_words)
 print(day_filter)
 
 
 
 
-# '''
-# # 4)remove all elements from a given list present in another list
+
+# 4)remove all elements from a given list present in another list
 # Original lists:
-# list1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-# list2: [2, 4, 6, 8]
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+list2 = [2, 4, 6, 8]
 
 # Remove all elements from 'list1' present in 'list2:
-# [1, 3, 5, 7, 9, 10]
+#[1, 3, 5, 7, 9, 10]
+
+def remove_elements(list1):
+    return list(filter(lambda x: x not in list2, list1))
+exercise_list = remove_elements(list1)
+
+print(exercise_list)
+
+
  
-
-
-
-
-
 
 #  5)
 # find the elements of a given list of strings that contain specific substring using lambda
-# Original list:
-# ['red', 'black', 'white', 'green', 'orange']
-# Substring to search:
-# ack
-# Elements of the said list that contain specific substring:
-# ['black']
-# Substring to search:
-# abc
-# Elements of the said list that contain specific substring:
-# []
-
-
+#Original list:
+orig_list = ['red', 'black', 'white', 'green', 'orange']
+#Substring to search: black
+#Elements of the said list that contain specific substring:
+substr_search = 'ack'
+#Substring to search:
+substr_search2 = 'abc'
+#Elements of the said list that contain specific substring:
+def substring_search(string, substr1, substr2):
+    return list(filter(lambda x: substr1 in x or substr2 in x, string))
+result_substring = substring_search(orig_list, substr_search, substr_search2)
+print(result_substring)
 
 
 
@@ -92,17 +95,16 @@ print(day_filter)
 # (This is like a password verification function, HINT: Python function 'any' may be useful)
 
 
-# str1 = "Hello8world"
-# str1 = "HELLO"
-# str1= "hello"
+str1 = "Hello8world"
+str2 = "HELLO"
+str3= "hello"
 
-
-
-
-
-
-
-
+def password_check():
+    return lambda s: any(p.isupper() for p in s) and any(p.islower() for p in s) and any(p.isdigit() for p in s) and len(s) >=8
+password_verify = password_check()
+print(password_verify(str1))
+print(password_verify(str2))
+print(password_verify(str3))
 
 
 
@@ -111,8 +113,13 @@ print(day_filter)
 # Write a Python program to sort a list of tuples using Lambda.
 
 # # Original list of tuples:
-# original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]
+original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]
 
 # # Expected Result:
 # # [('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]
 # '''
+
+def score_sorter(score):
+    return sorted(score, key=lambda x: x[1])
+asc_scores = score_sorter(original_scores)
+print(asc_scores)
