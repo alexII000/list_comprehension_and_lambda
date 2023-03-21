@@ -87,6 +87,7 @@ for i in original_list:
 
 # result = [x+y for x in [10, 20, 30] for y in [20, 40, 60]]
 # print(result)
+
 ## Exercise ##
 
 # 1 Using a list comprehension, create a new list called "newlist" out of the list "numbers",
@@ -123,14 +124,13 @@ n = [i for i in range(1, 1001) if '4' in str(i)]
 print(n)
 
 # count how many times the word 'the' appears in the text file - 'sometext.txt'
-count = sum(line.count('the') for line in open('sometext.txt', 'r'))
-count = 0
+count = sum(line.lower().count('the') for line in open('sometext.txt', 'r'))
 infile2 = open('sometext.txt', 'r')
-q = sum([i.count('the' or 'The') for i in infile2])
-print(q)
+print(count)
 
 
 ## Extract the numbers from the following phrase ##
 phrase = 'In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each event, with about 3 or 4 that were classifled as serious per event.'
-a = [i for i in phrase if i.isdigit()]
+words = phrase.split()
+a = [int(i) for i in words if i.isdigit()]
 print(a)
